@@ -20,6 +20,8 @@ function getHumanChoice() {
         return humanChoice;
     } else {
         console.log("You must choose rock, paper, or scissors!");
+        getHumanChoice();
+        return humanChoice;
     }
 }
 
@@ -64,7 +66,6 @@ function game() {
         console.log("Your Score: " + humanScore);
         console.log("Computer's Score: " + computerScore);
     }
-    
     if (humanScore > computerScore) {
         console.log("You're the overall winner!");
         return;
