@@ -4,10 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="rps.js"></script>
+    <script src="rps.js" defer></script>
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    
+    <div class="header">
+        <div class="flex-container flex-column center">
+            <h1>Rock - Paper - Scissors</h1>
+            <p>Do you want to play a game?</p>
+        </div>
+    </div>
+    <div class="game">
+    <div class="flex-container flex-column center">
+        <h2>Choose Your Weapon!</h2>
+        <div class="weapons">
+            <button id="rock">🪨</button>
+            <button id="paper">📃</button>
+            <button id="scissors">✄</button>
+        </div>
+        <div class="round-results">
+            <p>X beats Y</p>
+            <p>You Win!</p>
+        </div>
+        <div class="score">
+            <div class="score flex-column accent-border">
+                <p>Your Score</p>
+                <p id="hScore">0</p>
+            </div>
+            <div class="score flex-column accent-border">
+                <p>Computer Score</p>
+                <p id="cScore">0</p>
+            </div>
+        </div>
+        <div class="flex-container">
+        <div class="score">
+            <div class=""><p>X wins</p></div>
+            <div class="right"><button id="play-again">Play Again?</button></div>
+        </div>
+        </div>
+    </div>
+    </div>
 </body>
 </html>

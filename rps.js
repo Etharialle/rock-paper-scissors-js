@@ -10,7 +10,7 @@ function getComputerChoice() {
     computerChoice = choices[computerChoice];
     return computerChoice;
 }
-
+/*
 function getHumanChoice() {
     let humanChoice = prompt("Choose One: Rock, Paper, Scissors");
     //force user input to be a string
@@ -24,18 +24,20 @@ function getHumanChoice() {
         return humanChoice;
     }
 }
-
+*/
 function evalRound(humanChoice, computerChoice) {
     if ((computerChoice === 'rock' && humanChoice === 'paper') ||
     (computerChoice === 'paper' && humanChoice === 'scissors') ||
     (computerChoice === 'scissors' && humanChoice === 'rock')) {
         humanScore++;
+        document.getElementById('hScore').innerText = humanScore;
         winner = 1;
         return winner;
     } else if ((computerChoice === 'rock' && humanChoice === 'scissors') ||
     (computerChoice === 'paper' && humanChoice === 'rock') ||
     (computerChoice === 'scissors' && humanChoice === 'paper')) {
         computerScore++;
+        document.getElementById('cScore').innerText = computerScore;
         winner = 0;
         return winner;
     //Add else if to compare draw and then use human choice undefined to count as a loss
@@ -45,9 +47,9 @@ function evalRound(humanChoice, computerChoice) {
     }
 }
 
-function playRound() {
+function playRound(hChoice) {
     let cChoice = getComputerChoice();
-    let hChoice = getHumanChoice();
+    //let hChoice = getHumanChoice();
     winner = evalRound(hChoice, cChoice);
     console.log("Your choice was: " + hChoice);
     console.log("Computer's choice was: " + cChoice);
@@ -60,7 +62,7 @@ function playRound() {
     }
 }
 
-function game() {
+function game(humanChoice) {
     // commenting out why making ui
     /*for (let i = 1; i <= 5; i++) {
         playRound();
@@ -68,7 +70,7 @@ function game() {
         console.log("Computer's Score: " + computerScore);
     }
     */
-    playRound();
+    playRound(humanChoice);
     if (humanScore > computerScore) {
         console.log("You're the overall winner!");
         return;
@@ -80,4 +82,19 @@ function game() {
     }
 }
 
-game();
+//event listeners
+const rock = document.querySelector("#rock");
+rock.addEventListener("click", function (event) {
+    event.target.style.background = "blue";
+    game("rock")
+  });
+const paper = document.querySelector("#paper");
+paper.addEventListener("click", function (event) {
+    event.target.style.background = "blue";
+    game("paper")
+  });
+const scissors = document.querySelector("#scissors");
+scissors.addEventListener("click", function (event) {
+      event.target.style.background = "blue";
+      game("scissors")
+    });
