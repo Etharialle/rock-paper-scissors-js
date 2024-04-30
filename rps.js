@@ -61,11 +61,14 @@ function playRound() {
 }
 
 function game() {
-    for (let i = 1; i <= 5; i++) {
+    // commenting out why making ui
+    /*for (let i = 1; i <= 5; i++) {
         playRound();
         console.log("Your Score: " + humanScore);
         console.log("Computer's Score: " + computerScore);
     }
+    */
+    playRound();
     if (humanScore > computerScore) {
         console.log("You're the overall winner!");
         return;
