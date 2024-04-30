@@ -46,7 +46,7 @@ function evalRound(humanChoice, computerChoice) {
 function playRound() {
     let cChoice = getComputerChoice();
     let hChoice = getHumanChoice();
-    evalRound(hChoice, cChoice);
+    winner = evalRound(hChoice, cChoice);
     console.log("Your choice was: " + hChoice);
     console.log("Computer's choice was: " + cChoice);
     if (winner === 1) {
