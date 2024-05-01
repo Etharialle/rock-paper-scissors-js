@@ -1,4 +1,5 @@
 * {
+    /*border: #00FF00 solid 1px;*/
     padding: 0;
     margin:0;
 }
@@ -61,7 +62,7 @@ h3 {
     justify-content: center;
     align-items: center;
 }
-.game > * {
+.subgame > * {
     max-width: 40rem;
     margin: 0rem auto;
     display: flex;
@@ -94,8 +95,8 @@ button {
 
 }
 .two-columns {
-    padding: 2rem;
-    flex: 1 0 50%;
+    padding: 1rem;
+    flex: 1 0 40%;
 }
 .invisible {
     visibility: hidden;
