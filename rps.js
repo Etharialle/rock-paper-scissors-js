@@ -61,7 +61,9 @@ function playRound(humanChoice) {
 }
 
 function game(humanChoice) {
-    document.querySelector("button").setAttribute("style", "background-color: buttonface");
+    document.querySelector("#rock").setAttribute("style", "background-color: buttonface");
+    document.querySelector("#paper").setAttribute("style", "background-color: buttonface");
+    document.querySelector("#scissors").setAttribute("style", "background-color: buttonface");
     //verify a winner hasn't been decided
     if (humanScore > 4 || computerScore > 4) {
         window.alert("The game has ended, press \"Play Again\" to start over");
@@ -87,6 +89,9 @@ function restartGame() {
     document.getElementById('round-match').innerText = "";
     document.getElementById('round-winner').innerText = "";
     document.getElementById('game-winner').innerText = "";
+    document.querySelector("#rock").setAttribute("style", "background-color: buttonface");
+    document.querySelector("#paper").setAttribute("style", "background-color: buttonface");
+    document.querySelector("#scissors").setAttribute("style", "background-color: buttonface");
 }
 
 //event listeners
