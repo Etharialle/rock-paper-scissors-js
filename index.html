@@ -8,43 +8,46 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div class="header">
-        <div class="max-width center">
-            <div class="center">
+    <div class="header center-text">
+        <div class="max-width">
+            <div class="">
                 <h1>Rock - Paper - Scissors</h1>
-                <p>Do you want to play a game? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero odit, modi reprehenderit soluta a corporis sit cupiditate porro velit error harum eum. Expedita molestias, dolorem doloribus explicabo eos perferendis deleniti?</p>
+                <p>Do you want to play a game?</p>
             </div>
         </div>
     </div>
-    <div class="game">
-        <div class="max-width center">
+    <div class="game center-text">
+
             <h2>Choose Your Weapon!</h2>
-            <div class="weapons">
+            <div id="weapons">
                 <button id="rock">🪨</button>
                 <button id="paper">📃</button>
                 <button id="scissors">✄</button>
             </div>
-            <div class="round-results">
-                <p>X beats Y</p>
-                <p>You Win!</p>
+            <div id="round-result" class="invisible">
+                <div>
+                    <h3 id="round-match">X beats Y</h3>
+                    <h3 id="round-winner">*** You Win! ***</h3>
+                </div>
             </div>
-            <div class="center score">
-                <div class="accent-border">
+            <div>
+                <div class="accent-border two-columns">
                     <p>Your Score</p>
                     <p id="hScore">0</p>
                 </div>
-                <div class="accent-border">
+                <div class="accent-border two-columns">
                     <p>Computer Score</p>
                     <p id="cScore">0</p>
                 </div>
             </div>
-            <div class="flex-container center">
-                <div class="score">
-                    <div class=""><p>X wins</p></div>
-                    <div class="right"><button id="play-again">Play Again?</button></div>
+            <div class="invisible" id="restart">
+                <div class="two-columns">
+                    <h3 id="game-winner">X wins</h3>
+                </div>
+                <div class="two-columns">
+                    <button id="play-again">Play Again?</button>
                 </div>
             </div>
-        </div>
     </div>
 </body>
 </html>
