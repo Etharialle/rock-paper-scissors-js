@@ -1,7 +1,101 @@
 * {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin:0;
+}
+html {
+
 }
 body {
-    background-color: #0088BB;
+    background-color: #aa5555;
+    color: #FAFAFA;
+    height: 100svh;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+/* keeping this selector in case future sections are added
+body > * {
+    flex: 1 0 0;
+    padding: 1rem;
+
+}*/
+h1 {
+    font-size: 4rem;
+    font-weight: 1200;
+}
+h2 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+.flex-container {
+    display: flex;
+}
+.max-width {
+    max-width: 50rem;
+    margin: 0rem auto;
+}
+.header {
+    background-color: #005566;
+    flex: 0 0 0;
+    padding: 2rem 1rem;
+}
+.center-text {
+    text-align: center;
+}
+.center-flex {
+    justify-content: center;
+}
+.game {
+    background-color: #719cac;
+    flex: 1 1 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.game > * {
+    max-width: 40rem;
+    margin: 0rem auto;
+    display: flex;
+    flex: 1 1 100%;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-size: 4rem;
+    padding: 1rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 1rem;
+    box-shadow:
+        inset 0 0 .15rem 0 rgba(255,255,255,.4),
+        inset 0 0 .2rem 0 rgba(0,0,0,.4),
+        inset 0 0 .2rem .3rem rgba(0,0,0,.05),
+        .15rem .15rem .25rem 0 rgba(0,0,0,.25);
+}
+#play-again {
+    font-size: 1rem;
+    height: 4rem;
+}
+.accent-border {
+    border: #FAFAFA solid 1px;
+    background-color: #005566;
+
+}
+.two-columns {
+    padding: 2rem;
+    flex: 1 0 50%;
+}
+.invisible {
+    visibility: hidden;
 }

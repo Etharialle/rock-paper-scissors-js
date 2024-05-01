@@ -4,25 +4,9 @@ let winner;
 const choices = ['rock', 'paper', 'scissors'];
 
 function getComputerChoice() {
-    //Math.Random returns a number between 0 and 1;
-    //Math.floor * 3 will then return 0, 1, or 2) which can be used for the array position;
     let computerChoice = Math.floor(Math.random() * 3);
     computerChoice = choices[computerChoice];
     return computerChoice;
-}
-
-function getHumanChoice() {
-    let humanChoice = prompt("Choose One: Rock, Paper, Scissors");
-    //force user input to be a string
-    humanChoice = String(humanChoice);
-    humanChoice = humanChoice.toLocaleLowerCase();
-    if (choices.includes(humanChoice)) {
-        return humanChoice;
-    } else {
-        console.log("You must choose rock, paper, or scissors!");
-        getHumanChoice();
-        return humanChoice;
-    }
 }
 
 function evalRound(humanChoice, computerChoice) {
@@ -30,51 +14,98 @@ function evalRound(humanChoice, computerChoice) {
     (computerChoice === 'paper' && humanChoice === 'scissors') ||
     (computerChoice === 'scissors' && humanChoice === 'rock')) {
         humanScore++;
-        winner = 1;
-        return winner;
+        winner = 'You';
+        return [winner, humanScore, computerScore];
     } else if ((computerChoice === 'rock' && humanChoice === 'scissors') ||
     (computerChoice === 'paper' && humanChoice === 'rock') ||
     (computerChoice === 'scissors' && humanChoice === 'paper')) {
         computerScore++;
-        winner = 0;
-        return winner;
-    //Add else if to compare draw and then use human choice undefined to count as a loss
+        winner = 'Computer';
+        return [winner, humanScore, computerScore];
     } else {
-        winner = 2;
-        return winner
+        winner = 'Draw';
+        return [winner, humanScore, computerScore];
     }
 }
 
-function playRound() {
-    let cChoice = getComputerChoice();
-    let hChoice = getHumanChoice();
-    winner = evalRound(hChoice, cChoice);
-    console.log("Your choice was: " + hChoice);
-    console.log("Computer's choice was: " + cChoice);
-    if (winner === 1) {
+function playRound(humanChoice) {
+    computerChoice = getComputerChoice();
+    [winner, humanScore, computerScore] = evalRound(humanChoice, computerChoice);
+    console.log("Your choice was: " + humanChoice);
+    console.log("Computer's choice was: " + computerChoice);
+    document.getElementById('hScore').innerText = humanScore;
+    document.getElementById('cScore').innerText = computerScore;
+    document.querySelector("#round-result").setAttribute("style", "visibility: visible");
+    if (winner === 'You') {
+        document.getElementById('round-match').innerText = humanChoice + " beats " + computerChoice;
+        document.getElementById('round-winner').innerText = "*** You Win! ***";
+        document.querySelector("#" + humanChoice).setAttribute("style", "background-color: #00FF00");
         console.log("You Won!");
-    } else if (winner === 0) {
+        return;
+    }
+    if (winner === 'Computer') {
+        document.getElementById('round-match').innerText = computerChoice + " beats " + humanChoice;
+        document.getElementById('round-winner').innerText = "*** Computer Wins! ***";
+        document.querySelector("#" + humanChoice).setAttribute("style", "background-color: #FF0000");
         console.log("You Lost!")
-    } else {
+        return;
+    }
+    if (winner === 'Draw') {
+        document.getElementById('round-match').innerText = humanChoice + " vs. " + computerChoice;
+        document.getElementById('round-winner').innerText = "*** It's a Draw! ***";
+        document.querySelector("#" + humanChoice).setAttribute("style", "background-color: #555555");
         console.log ("Draw!");
+        return;
     }
+    return;
 }
 
-function game() {
-    for (let i = 1; i <= 5; i++) {
-        playRound();
-        console.log("Your Score: " + humanScore);
-        console.log("Computer's Score: " + computerScore);
-    }
-    if (humanScore > computerScore) {
-        console.log("You're the overall winner!");
+function game(humanChoice) {
+    document.querySelector("button").setAttribute("style", "background-color: buttonface");
+    //verify a winner hasn't been decided
+    if (humanScore > 4 || computerScore > 4) {
+        window.alert("The game has ended, press \"Play Again\" to start over");
         return;
-    } else if (computerScore > humanScore) {
-        console.log("The computer is the overall winner!");
-        return;
-    } else {
-        console.log("It's a draw!")
     }
+    playRound(humanChoice);
+    if (humanScore >= 5 || computerScore >= 5) {
+        document.getElementById('game-winner').innerText = winner + " Won!";
+        document.querySelector("#restart").setAttribute("style", "visibility: visible");
+        return;
+    }
+    
+    return;
 }
 
-game();
+function restartGame() {
+    document.querySelector("#restart").setAttribute("style", "visibility: hidden");
+    document.querySelector("#round-result").setAttribute("style", "visibility: hidden");
+    humanScore = 0;
+    computerScore = 0;
+    document.getElementById('hScore').innerText = humanScore;
+    document.getElementById('cScore').innerText = computerScore;
+    document.getElementById('round-match').innerText = "";
+    document.getElementById('round-winner').innerText = "";
+    document.getElementById('game-winner').innerText = "";
+}
+
+//event listeners
+const rock = document.querySelector("#rock");
+rock.addEventListener("click", function (event) {
+    game("rock");
+  });
+
+const paper = document.querySelector("#paper");
+paper.addEventListener("click", function (event) {
+    game("paper");
+  });
+
+const scissors = document.querySelector("#scissors");
+scissors.addEventListener("click", function (event) {
+      game("scissors");
+    });
+
+const playAgain = document.querySelector("#play-again");
+playAgain.addEventListener("click", function () {
+    restartGame();
+    });5
